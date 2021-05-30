@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/custom_ripple"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_ripple">
+
+        <ImageView
+            android:id="@+id/image_holder_selected_wview"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:src="@drawable/icon_perosn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_view_header_selected_wview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/lost_document"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/image_holder_selected_wview"
+            app:layout_constraintStart_toStartOf="@+id/image_holder_selected_wview"
+            app:layout_constraintTop_toBottomOf="@+id/image_holder_selected_wview" />
+
+        <TextView
+            android:id="@+id/text_view_location_selected_wview"
+            android:layout_width="200dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Висаитовский район"
+            android:textSize="@dimen/text_view_location_time"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_header_selected_wview"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/text_view_header_selected_wview"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_header_selected_wview"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/text_view_time_selected_wview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="@dimen/text_view_location_time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/text_view_location_selected_wview"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_location_selected_wview"
+            tools:text="Сегодня, 18:43" />
+
+        <ImageView
+            android:id="@+id/imageView_selected_wview"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/grid_layout_view_counter"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_time_selected_wview"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_views_selected_wview"
+            app:layout_constraintTop_toTopOf="@+id/text_view_time_selected_wview"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_eye"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/text_view_views_selected_wview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/black"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_selected_wview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView_selected_wview"
+            tools:ignore="SmallSp"
+            tools:text="100" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

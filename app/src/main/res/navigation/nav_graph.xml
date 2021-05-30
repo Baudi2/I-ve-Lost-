@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentLost2">
+    <action
+        android:id="@+id/action_global_fragmentAbout"
+        app:destination="@id/fragmentAbout2"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top" />
+    <fragment
+        android:id="@+id/fragmentAbout2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.menu.FragmentAbout"
+        android:label="О нас"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/fragmentAdd"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.add.FragmentAdd"
+        android:label="{topic}"
+        tools:layout="@layout/fragment_add">
+        <argument
+            android:name="topic"
+            app:argType="string" />
+        <argument
+            android:name="isLost"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_fragmentAdd_to_fragmentDialogSelectAdd"
+            app:destination="@id/fragmentDialogSelectAdd" />
+        <argument
+            android:name="selected_item_string"
+            app:argType="string" />
+        <argument
+            android:name="text_view_color"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentAdd_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddChooseCategory"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.add.FragmentAddChooseCategory"
+        android:label="Категории"
+        tools:layout="@layout/fragment_add_choose_category">
+        <argument
+            android:name="lost_found"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdd_to_fragmentAddEdit"
+            app:destination="@id/fragmentAdd" />
+        <argument
+            android:name="isLost"
+            app:argType="boolean" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_global_fragmentAddLostFind2"
+        app:destination="@id/fragmentAddLostFind"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out" />
+    <fragment
+        android:id="@+id/fragmentAddLostFind"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.add.FragmentAddLostFind"
+        android:label="Выбор"
+        tools:layout="@layout/fragment_choose_lost_found">
+        <action
+            android:id="@+id/action_fragmentAddLostFind2_to_fragmentAdd"
+            app:destination="@id/fragmentAddChooseCategory" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChats"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.messages.FragmentMessages"
+        android:label="{userName}"
+        tools:layout="@layout/fragment_messages">
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userPhoto"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsFound"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.found.FragmentDetailsFound"
+        android:label="Описание"
+        tools:layout="@layout/fragment_details_found">
+        <action
+            android:id="@+id/action_fragmentDetailsFound_to_fragmentDetailsSelectedPhoto"
+            app:destination="@id/fragmentDetailsSelectedPhoto"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="clickedItem"
+            app:argType="ru.startandroid.develop.ivelost.module.data.ClickedItemDescription" />
+        <action
+            android:id="@+id/action_fragmentDetailsFound_to_fragmentSelectedAds"
+            app:destination="@id/fragmentSelectedAds"
+            app:popUpTo="@+id/fragmentSelectedAds"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="youradddata"
+            app:argType="ru.startandroid.develop.ivelost.module.data.YourAddNavigate" />
+        <action
+            android:id="@+id/action_fragmentDetailsFound_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsLost"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.lost.FragmentDetailsLost"
+        android:label="Описание"
+        tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/action_fragmentDetails_to_fragmentDetailsSelectedPhoto"
+            app:destination="@id/fragmentDetailsSelectedPhoto"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="clickedItemDescription"
+            app:argType="ru.startandroid.develop.ivelost.module.data.ClickedItemDescription" />
+        <action
+            android:id="@+id/action_fragmentDetailsLost_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsSelectedPhoto"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.FragmentDetailsSelectedPhoto"
+        android:label="Фото"
+        tools:layout="@layout/details_selected_photo">
+        <argument
+            android:name="selectedPhoto"
+            app:argType="integer" />
+        <argument
+            android:name="startPosition"
+            app:argType="integer" />
+        <argument
+            android:name="isYourAdd"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/fragmentDialogSelectAdd"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.add.FragmentDialogSelectAdd"
+        android:label="picker_fragment_dialog"
+        tools:layout="@layout/picker_fragment_dialog">
+        <action
+            android:id="@+id/action_fragmentDialogSelectAdd_to_fragmentAdd"
+            app:destination="@id/fragmentAdd"
+            app:popUpTo="@id/fragmentAdd"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="dialog_object"
+            app:argType="ru.startandroid.develop.ivelost.module.data.SelectDialogAdd" />
+
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentFound2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.found.FragmentFound"
+        android:label="Нашел"
+        tools:layout="@layout/fragment_found">
+        <action
+            android:id="@+id/action_fragmentFound_to_fragmentDetailsFound2"
+            app:destination="@id/fragmentDetailsFound"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.registration.FragmentLogin"
+        android:label="FragmentLogin"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentProfile"
+            app:destination="@id/fragmentProfile2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/fragmentProfile2"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLost2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.lost.FragmentLost"
+        android:label="Потерял"
+        tools:layout="@layout/fragment_lost">
+        <action
+            android:id="@+id/action_fragmentLost_to_Описание"
+            app:destination="@+id/fragmentDetailsLost"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_fragmentMessages"
+        app:destination="@id/fragmentMessages2"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/fragmentMessages2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.messages.FragmentChats"
+        android:label="Сообщения"
+        tools:layout="@layout/fragment_chats">
+        <action
+            android:id="@+id/action_fragmentMessages2_to_fragmentChats"
+            app:destination="@id/fragmentChats"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <action
+        android:id="@+id/action_global_fragmentProfile"
+        app:destination="@id/fragmentProfile2"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top" />
+    <fragment
+        android:id="@+id/fragmentProfile2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.profile.FragmentProfile"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentRegister"
+            app:destination="@id/fragmentRegister"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentLost"
+            app:destination="@id/fragmentLost2"
+            app:popUpTo="@+id/fragmentLost"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="isRegistered"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentSelectedAds"
+            app:destination="@id/fragmentSelectedAds" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegister"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.registration.FragmentRegister"
+        android:label="Регистрация"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentLogin"
+            app:destination="@id/fragmentLogin"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_top" />
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentProfile"
+            app:destination="@id/fragmentProfile2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/fragmentProfile2"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_global_fragmentReview"
+        app:destination="@id/fragmentReview2"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top" />
+    <fragment
+        android:id="@+id/fragmentReview2"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.menu.FragmentReview"
+        android:label="Пожелания"
+        tools:layout="@layout/fragment_review" />
+    <fragment
+        android:id="@+id/fragmentSelectedAds"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.profile.FragmentSelectedAds"
+        android:label="{topic}"
+        tools:layout="@layout/fragment_selected_ads">
+        <argument
+            android:name="topic"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentSelectedAds_to_fragmentDetailsFound"
+            app:destination="@id/fragmentDetailsFound"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="size"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.MapsFragment"
+        android:label="Карта"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="northPoint"
+            app:argType="string" />
+        <argument
+            android:name="eastPoint"
+            app:argType="string" />
+
+    </fragment>
+</navigation>

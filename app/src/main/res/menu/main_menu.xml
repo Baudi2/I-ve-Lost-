@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/fragmentAbout2"
+            android:icon="@drawable/ic_about_us"
+            android:title="@string/about_us"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/fragmentReview2"
+            android:icon="@drawable/ic_wish"
+            android:title="@string/wish"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/changeTheme"
+            android:icon="@drawable/ic_dark_mode"
+            android:title="@string/dark_theme"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/home_drawer"
+            android:icon="@drawable/ic_home_menu"
+            android:title="@string/home_menu" />
+    </group>
+
+</menu>

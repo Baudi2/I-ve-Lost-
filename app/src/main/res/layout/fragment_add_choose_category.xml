@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".view.fragments.add.FragmentAddChooseCategory">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-36dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_view_what_you_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="82dp"
+            android:layout_marginBottom="46dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            tools:text="Что вы потеряли?" />
+
+        <TextView
+            android:id="@+id/text_view_lost_document"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/lost_document_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+        <TextView
+            android:id="@+id/text_view_lost_money"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_money_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+        <TextView
+            android:id="@+id/text_view_lost_animals"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_animal_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+        <TextView
+            android:id="@+id/text_view_lost_people"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_people_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+
+        <TextView
+            android:id="@+id/text_view_lost_jewelry"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_jewelry_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+        <TextView
+            android:id="@+id/text_view_lost_equipment"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_personal_belongings_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+
+        <TextView
+            android:id="@+id/text_view_lost_other"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lost_other_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lost_text_views_text_size" />
+    </LinearLayout>
+
+</ScrollView>

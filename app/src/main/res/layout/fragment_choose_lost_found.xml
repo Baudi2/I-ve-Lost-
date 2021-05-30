@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".view.fragments.add.FragmentAddLostFind">
+
+    <TextView
+        android:id="@+id/text_lost"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="@string/fragment_choose_lost_direction"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="42sp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/text_found"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/fragment_choose_found_direction"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="42sp"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

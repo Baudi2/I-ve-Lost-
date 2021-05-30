@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".view.fragments.lost.FragmentDetailsLost">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_lost_details_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/horizontal_recycler_view_item" />
+
+        <TextView
+            android:id="@+id/header_details_lost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/lost_document"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_recycler_view" />
+
+        <TextView
+            android:id="@+id/description_details_lost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/long_text_lost_document"
+            android:textSize="@dimen/fragment_details_text_views"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_details_lost" />
+
+        <TextView
+            android:id="@+id/details_lost_show_map"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/look_in_the_map"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/look_on_the_map"
+            app:layout_constraintStart_toStartOf="@+id/description_details_lost"
+            app:layout_constraintTop_toBottomOf="@+id/description_details_lost" />
+
+        <TextView
+            android:id="@+id/details_lost_text_view_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/details_fragment_category_text_view"
+            android:textSize="@dimen/fragment_details_text_views"
+            app:layout_constraintStart_toStartOf="@+id/details_lost_show_map"
+            app:layout_constraintTop_toBottomOf="@+id/details_lost_show_map" />
+
+        <TextView
+            android:id="@+id/details_lost_category_type_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/fragment_details_text_views"
+            app:layout_constraintBottom_toBottomOf="@+id/details_lost_text_view_category"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/details_lost_text_view_category"
+            app:layout_constraintTop_toTopOf="@+id/details_lost_text_view_category"
+            tools:text="Документы" />
+
+        <TextView
+            android:id="@+id/ad_type_lost_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="@dimen/fragment_details_text_views"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/details_lost_text_view_category"
+            app:layout_constraintTop_toBottomOf="@+id/details_lost_text_view_category"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Тип документа" />
+
+        <TextView
+            android:id="@+id/ad_type_object_lost_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/fragment_details_text_views"
+            app:layout_constraintBottom_toBottomOf="@+id/ad_type_lost_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/details_lost_category_type_text_view"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/details_lost_category_type_text_view"
+            app:layout_constraintTop_toTopOf="@+id/ad_type_lost_text_view"
+            tools:text="Паспорт" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

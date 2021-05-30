@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_view_location_time">12sp</dimen>
+    <dimen name="lost_text_views_text_size">24sp</dimen>
+    <dimen name="fragment_details_text_views">20sp</dimen>
+    <dimen name="look_on_the_map">18sp</dimen>
+
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="normal_text">16sp</dimen>
+    <dimen name="vertical_margin">10dp</dimen>
+    <dimen name="vertical_large_margin">16dp</dimen>
+    <dimen name="small_text">14sp</dimen>
+    <dimen name="profile_user_photo_width">55dp</dimen>
+    <dimen name="profile_user_photo_height">55dp</dimen>
+
+    <dimen name="profile_btn_change_photo_width">45dp</dimen>
+    <dimen name="profile_btn_change_photo_photo_height">45dp</dimen>
+    <dimen name="profile_user_photo_border">2dp</dimen>
+    <dimen name="profile_ripple_effect_radius">4dp</dimen>
+</resources>
