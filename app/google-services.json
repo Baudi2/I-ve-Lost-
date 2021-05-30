@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "755330255974",
+    "project_id": "i-ve-lost-second",
+    "storage_bucket": "i-ve-lost-second.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755330255974:android:8989c87a8228ce868e31a7",
+        "android_client_info": {
+          "package_name": "ru.startandroid.develop.ivelost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755330255974-eh8tcmcl6mt2fse9gd5j87mfjghaepr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhBUhhZ7T-8AtLDdX4HKYHQtdf7CsUNVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755330255974-eh8tcmcl6mt2fse9gd5j87mfjghaepr2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

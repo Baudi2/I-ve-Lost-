@@ -317,9 +317,9 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="ru.startandroid.develop.ivelost.view.fragments.MapsFragment"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.FragmentGoogleMaps"
         android:label="Карта"
-        tools:layout="@layout/fragment_maps" >
+        tools:layout="@layout/fragment_google_maps" >
         <argument
             android:name="location"
             app:argType="string" />

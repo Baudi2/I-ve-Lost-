@@ -4,15 +4,15 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=D6:91:E2:FE:31:A2:D8:20:CB:58:11:10:94:7C:E3:5C:DC:6D:17:4C%3Bru.startandroid.develop.ivelost.view.fragments
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=0C:49:53:D9:F7:8B:69:86:0F:C3:59:B8:9D:E0:4A:94:36:A4:A5:66%3Bru.startandroid.develop.testprojectnavigation
 
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    ru.startandroid.develop.ivelost.view.fragments
+    ru.startandroid.develop.testprojectnavigation
 
     SHA-1 certificate fingerprint:
-    D6:91:E2:FE:31:A2:D8:20:CB:58:11:10:94:7C:E3:5C:DC:6D:17:4C
+    0C:49:53:D9:F7:8B:69:86:0F:C3:59:B8:9D:E0:4A:94:36:A4:A5:66
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key

@@ -45,6 +45,7 @@ class FragmentDetailsLost : Fragment(R.layout.fragment_details), HorizontalAdapt
             detailsLostShowMap.setOnClickListener {
 
                 val action = FragmentDetailsLostDirections.actionFragmentDetailsLostToMapsFragment(
+
                         args.clickedItemDescription.location, args.clickedItemDescription.northPoint.toString(),
                         args.clickedItemDescription.eastPoint.toString()
                 )
