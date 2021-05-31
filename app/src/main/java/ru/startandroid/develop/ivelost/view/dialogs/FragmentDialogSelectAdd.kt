@@ -1,4 +1,4 @@
-package ru.startandroid.develop.ivelost.view.fragments.add
+package ru.startandroid.develop.ivelost.view.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,10 +40,10 @@ class FragmentDialogSelectAdd : BottomSheetDialogFragment(), HeaderAdapter.Heade
         binding.apply {
             buttonClose.setOnClickListener {
                 val action =
-                        FragmentDialogSelectAddDirections.actionFragmentDialogSelectAddToFragmentAdd(
-                                args.dialogObject.topic,
-                                args.dialogObject.isLost, args.dialogObject.textViewDefaultText,
-                        )
+                    FragmentDialogSelectAddDirections.actionFragmentDialogSelectAddToFragmentAdd(
+                        args.dialogObject.topic,
+                        args.dialogObject.isLost, args.dialogObject.textViewDefaultText,
+                    )
                 findNavController().navigate(action)
             }
         }
@@ -52,11 +52,11 @@ class FragmentDialogSelectAdd : BottomSheetDialogFragment(), HeaderAdapter.Heade
 
     override fun onHeaderItemListener(position: Int) {
         val action =
-                FragmentDialogSelectAddDirections.actionFragmentDialogSelectAddToFragmentAdd(
-                        args.dialogObject.topic,
-                        args.dialogObject.isLost, data[position].headerTopic,
-                        ContextCompat.getColor(APP_ACTIVITY, R.color.black)
-                )
+            FragmentDialogSelectAddDirections.actionFragmentDialogSelectAddToFragmentAdd(
+                args.dialogObject.topic,
+                args.dialogObject.isLost, data[position].headerTopic,
+                ContextCompat.getColor(APP_ACTIVITY, R.color.black)
+            )
         findNavController().navigate(action)
     }
 

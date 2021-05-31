@@ -5,7 +5,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
-import android.view.*
+import android.view.Gravity
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
@@ -14,7 +17,6 @@ import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import ru.startandroid.develop.ivelost.R
 import ru.startandroid.develop.ivelost.module.data.HeaderItem
-import java.lang.Exception
 
 //? Чтобы скрыть клавиатуру после нажатия кнопки
 fun hideKeyboard(view: View) {
@@ -261,6 +263,23 @@ fun monthToString(month: Int): String {
         9 -> "октябрь"
         10 -> "ноябрь"
         else -> "декабрь"
+    }
+}
+
+
+fun firebaseEnglishExceptionToRussian(exception: String?) {
+    if (exception == null) return
+    if (exception.contains("The email address is badly formatted.")) {
+        longToast("Неудалось создать аккаунт: Введен неправильный формат электронной почты")
+    }
+    if (exception.contains("The given password is invalid. [ Password should be at least 6 characters ]")) {
+        longToast("Неудалось создать аккаунт: Введен не верный пароль [ Пароль должен состоять как минимум из шести символов ]")
+    }
+    if(exception.contains("The email address is already in use by another account.")) {
+        longToast("Неудалось создать аккаунт: Аккаунт с такой электронной почтой уже существует")
+    }
+    if (exception.contains("A network error (such as timeout, interrupted connection or unreachable host) has occurred")) {
+        longToast("Неудалось создать аккаунт: Произошла сетевая ошибка (например, тайм-аут, прерванное соединение или недоступный хост)")
     }
 }
 

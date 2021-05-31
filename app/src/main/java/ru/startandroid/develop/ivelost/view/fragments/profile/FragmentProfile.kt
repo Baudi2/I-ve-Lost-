@@ -17,8 +17,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import ru.startandroid.develop.ivelost.R
 import ru.startandroid.develop.ivelost.databinding.FragmentProfileBinding
+import ru.startandroid.develop.ivelost.module.data.User
 import ru.startandroid.develop.testprojectnavigation.utils.*
 
 class FragmentProfile : Fragment(R.layout.fragment_profile) {
@@ -85,6 +88,26 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
         //? прячем иконку бургер и убираем возможность вытягивать drawerLayout
         lockDrawer()
         hideDrawer()
+
+        fetchUserName()
+    }
+
+    private fun fetchUserName() {
+        val registered = FirebaseAuth.getInstance()
+        if (registered.currentUser != null) {
+            val uid = registered.uid
+            val base = FirebaseDatabase.getInstance().getReference("users/$uid")
+
+            base.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val currentUser = snapshot.getValue(User::class.java) ?: return
+                    binding.profileFullName.text = currentUser.username
+                    longToast("Вы успешно зарегистрировались!")
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
     }
 
     //? Создаем алерт диалог который будет появляться если пользователь попытается зайти в

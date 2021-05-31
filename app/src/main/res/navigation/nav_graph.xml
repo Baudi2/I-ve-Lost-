@@ -154,7 +154,7 @@
     </fragment>
     <dialog
         android:id="@+id/fragmentDialogSelectAdd"
-        android:name="ru.startandroid.develop.ivelost.view.fragments.add.FragmentDialogSelectAdd"
+        android:name="ru.startandroid.develop.ivelost.view.dialogs.FragmentDialogSelectAdd"
         android:label="picker_fragment_dialog"
         tools:layout="@layout/picker_fragment_dialog">
         <action
@@ -284,6 +284,9 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/fragmentProfile2"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentVerify"
+            app:destination="@id/fragmentVerify" />
 
     </fragment>
     <action
@@ -330,5 +333,14 @@
             android:name="eastPoint"
             app:argType="string" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentVerify"
+        android:name="ru.startandroid.develop.ivelost.view.fragments.registration.FragmentVerify"
+        android:label="Проверка"
+        tools:layout="@layout/verfify_fragment" >
+        <action
+            android:id="@+id/action_fragmentVerify_to_fragmentProfile2"
+            app:destination="@id/fragmentProfile2" />
     </fragment>
 </navigation>

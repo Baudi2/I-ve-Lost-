@@ -1,6 +1,7 @@
 package ru.startandroid.develop.ivelost.view.fragments.registration
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -20,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage
 import ru.startandroid.develop.ivelost.R
 import ru.startandroid.develop.ivelost.databinding.FragmentRegisterBinding
 import ru.startandroid.develop.ivelost.module.data.User
+import ru.startandroid.develop.ivelost.view.dialogs.ProgressDialog
 import ru.startandroid.develop.testprojectnavigation.utils.*
 import java.util.*
 
@@ -34,10 +36,13 @@ class FragmentRegister : Fragment(R.layout.fragment_register) {
     private var selectedPhotoUri: Uri? = null
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDb: DatabaseReference
+    private lateinit var dialog: Dialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterBinding.bind(view)
+
+        dialog = ProgressDialog.progressDialog(requireContext())
 
         binding.apply {
             alreadyHaveAccountTextView.setOnClickListener {
@@ -66,32 +71,40 @@ class FragmentRegister : Fragment(R.layout.fragment_register) {
         val email = binding.tIETEmail.text.toString()
         val password = binding.tIETPassword.text.toString()
 
+        dialog.show()
+
+
+
         if (userName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                        if (!it.isSuccessful) return@addOnCompleteListener
+                .addOnCompleteListener {
 
-                        // here the user is successfully created
-                        Log.d(LOG_TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
+                    if (!it.isSuccessful) return@addOnCompleteListener
 
-                        //? загрузка фотографии пользователя на сервер в firebase
-                        if (binding.selectphotoImageviewRegister.drawable != null) {
-                            uploadImageToFirebaseStorage(userName, email)
-                        } else {
-                            saveUserToFirebaseDatabase(null, userName, email)
-                        }
+                    // here the user is successfully created
+                    Log.d(LOG_TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
-                    }.addOnFailureListener {
-                        longToast("Failed to create user: ${it.message}")
+                    //? загрузка фотографии пользователя на сервер в firebase
+                    if (binding.selectphotoImageviewRegister.drawable != null) {
+                        uploadImageToFirebaseStorage(userName, email)
+                    } else {
+                        saveUserToFirebaseDatabase(null, userName, email)
                     }
+                }.addOnFailureListener {
+                    dialog.dismiss()
+                    firebaseEnglishExceptionToRussian(it.message)
+                }.addOnSuccessListener {
+                    //dialog.show()
+                }
             hideKeyboard(view)
         } else {
             //? если поля пустым предупреждаем юзера что их надо заполнить
             Toast.makeText(
-                    requireContext(),
-                    R.string.fragment_register_login_toast_fill_data,
-                    Toast.LENGTH_SHORT
+                requireContext(),
+                R.string.fragment_register_login_toast_fill_data,
+                Toast.LENGTH_SHORT
             ).show()
+            dialog.dismiss()
         }
     }
 
@@ -122,15 +135,15 @@ class FragmentRegister : Fragment(R.layout.fragment_register) {
                 selectedPhotoUri?.let {
                     if (Build.VERSION.SDK_INT < 28) {
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                                activity?.contentResolver,
-                                selectedPhotoUri
+                            activity?.contentResolver,
+                            selectedPhotoUri
                         )
                         binding.selectphotoImageviewRegister.setImageBitmap(bitmap)
                         binding.selectphotoButtonRegister.alpha = 0f
                     } else {
                         val source = ImageDecoder.createSource(
-                                requireActivity().contentResolver,
-                                selectedPhotoUri!!
+                            requireActivity().contentResolver,
+                            selectedPhotoUri!!
                         )
                         val bitmap = ImageDecoder.decodeBitmap(source)
                         binding.selectphotoImageviewRegister.setImageBitmap(bitmap)
@@ -160,27 +173,34 @@ class FragmentRegister : Fragment(R.layout.fragment_register) {
 
         //? загружаем фото
         ref.putFile(selectedPhotoUri!!)
-                .addOnSuccessListener {
-                    Log.d(LOG_TAG, "Successfully uploaded image: ${it.metadata?.path}")
+            .addOnSuccessListener {
+                Log.d(LOG_TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
-                    //? получаем доступ к file location
-                    ref.downloadUrl.addOnSuccessListener {
-                        Log.d(LOG_TAG, "File location: $it")
-                        saveUserToFirebaseDatabase(it.toString(), name, email)
-                    }
-                }.addOnFailureListener {
+                //? получаем доступ к file location
+                ref.downloadUrl.addOnSuccessListener {
+                    Log.d(LOG_TAG, "File location: $it")
+                    saveUserToFirebaseDatabase(it.toString(), name, email)
                 }
+            }.addOnFailureListener {
+            }
     }
 
     private fun saveUserToFirebaseDatabase(profileImageUrl: String?, name: String, email: String) {
         //? получаем доступ к юзер айди
         val uid = FirebaseAuth.getInstance().uid ?: ""
         //? сохраняем данные юзера пользователя в нод
-        //val ref = Firebase.database.reference
         val user = User(uid, name, email, profileImageUrl)
+        val currentUser = FirebaseAuth.getInstance().currentUser ?: null
 
         //? сохраняем юзер объект на firebase database
         mDb.child("users").child(uid).setValue(user)
+            .addOnCompleteListener {
+                dialog.dismiss()
+                if (!currentUser!!.isEmailVerified) {
+                    val action = FragmentRegisterDirections.actionFragmentRegisterToFragmentVerify()
+                    findNavController().navigate(action)
+                }
+            }
     }
 }
 

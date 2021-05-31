@@ -222,4 +222,6 @@
     <string name="fragment_profile_favorites">Избранное</string>
 
     <string name="ef_msg_no_camera_permission">Sh</string>
+    <string name="button_confirm">Продолжить</string>
+    <string name="confirm_email_text_view_text">На вашу почту было отправлено письмо для потверждения введенного вами электронного адреса. \n\nПожалуйста перейдети по ссылке в ней и подтвердите вашу почту.</string>
 </resources>
